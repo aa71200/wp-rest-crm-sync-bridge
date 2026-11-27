@@ -1,5 +1,7 @@
 # WP REST CRM Sync Bridge
 
+[![Portfolio checks](https://github.com/aa71200/wp-rest-crm-sync-bridge/actions/workflows/checks.yml/badge.svg?branch=main)](https://github.com/aa71200/wp-rest-crm-sync-bridge/actions/workflows/checks.yml)
+
 WordPress REST API plugin demonstrating secure inbound CRM webhooks and admin-authenticated outbound user syncing with schema validation and idempotent retries.
 
 ## What This Demonstrates
@@ -22,6 +24,14 @@ Define in `wp-config.php` (or store via options):
 define( 'WPRB_WEBHOOK_SECRET', 'replace-with-random-secret' );
 define( 'WPRB_CRM_ENDPOINT', 'https://crm.example.com/api/contacts' );
 define( 'WPRB_CRM_API_KEY', 'replace-with-crm-token' );
+```
+
+## Automated Tests
+
+Run the self-contained CLI verification suite (covers HMAC signatures, replay window protection, route schema validation, idempotent `event_id` deduplication, and outbound CRM sync headers):
+
+```bash
+php tests/check.php
 ```
 
 ## Staging Verification Steps
