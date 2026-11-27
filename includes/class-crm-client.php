@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Client for sending contact payloads to the external CRM API.
+ */
 final class CRM_Client {
 
 	/**

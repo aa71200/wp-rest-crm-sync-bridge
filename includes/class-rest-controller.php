@@ -19,6 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Registers and handles plugin REST API routes.
+ */
 final class Rest_Controller extends WP_REST_Controller {
 
 	public const ALLOWED_STATUSES = array( 'lead', 'qualified', 'customer', 'inactive' );
@@ -40,6 +43,9 @@ final class Rest_Controller extends WP_REST_Controller {
 
 	/**
 	 * Constructor.
+	 *
+	 * @param Auth_Verifier $auth   Request authentication verifier.
+	 * @param CRM_Client    $client Outbound CRM HTTP client.
 	 */
 	public function __construct( Auth_Verifier $auth, CRM_Client $client ) {
 		$this->namespace = 'codexawp-crm/v1';

@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Handles admin capability checks and webhook signature verification.
+ */
 final class Auth_Verifier {
 
 	public const SIGNATURE_HEADER = 'x-wprb-signature';
@@ -92,6 +95,10 @@ final class Auth_Verifier {
 
 	/**
 	 * Compute HMAC-SHA256 signature for timestamp + raw body.
+	 *
+	 * @param string $timestamp Unix timestamp header value.
+	 * @param string $raw_body  Raw HTTP request body.
+	 * @param string $secret    Shared HMAC secret.
 	 */
 	public static function compute_signature( string $timestamp, string $raw_body, string $secret ): string {
 		return hash_hmac( 'sha256', $timestamp . '.' . $raw_body, $secret );
