@@ -1,0 +1,15 @@
+name: Portfolio checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  php-quality:
+    uses: aa71200/aa71200/.github/workflows/php-quality.yml@main
+    with:
+      harness_ref: main
